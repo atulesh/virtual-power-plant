@@ -1,8 +1,13 @@
-import { debounce } from 'lodash';
 import React, { FC, useState } from 'react';
+import { debounce } from 'lodash';
 import { Form, Button, Row, Col } from 'react-bootstrap';
+import { searchCriteria } from '../models/battery';
 
-const BatterySearchForm:FC<any> = ({ onSearch }) => {
+interface BatterySearchFormProps {
+    onSearch: (searchCriteria: searchCriteria) => void;
+}
+
+const BatterySearchForm:FC<BatterySearchFormProps> = ({ onSearch }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [postCodeStart, setPostcodeStart] = useState('');
     const [postCodeEnd, setPostcodeEnd] = useState('');

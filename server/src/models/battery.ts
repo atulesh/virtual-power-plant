@@ -4,8 +4,16 @@ export interface IBattery {
     name: string;
     postcode: number;
     wattCapacity: string;
-    totalWattCapacity: number;
-    averageWattCapacity: number;
+}
+
+export interface BatteryStatistic {
+    totalWattCapacity?: number;
+    averageWattCapacity?: number;
+}
+
+export interface IBatteryResponse{
+    batteryList: IBattery[]; 
+    batteryStats: BatteryStatistic 
 }
 
 export interface Battery extends Document, Omit<IBattery, 'totalWattCapacity' | 'averageWattCapacity'>{}

@@ -5,9 +5,15 @@ interface IBattery{
     wattCapacity: string;
 }
 
+interface searchCriteria {
+    searchTerm: string | undefined;
+    postCodeStart: string | undefined;
+    postCodeEnd: string | undefined;
+  }
+
 interface BatteryStatistic {
-    totalWattCapacity?: number;
-    averageWattCapacity?: number;
+    totalWattCapacity: number;
+    averageWattCapacity: number;
 }
 
 interface IBatteryResponse{
@@ -22,4 +28,4 @@ interface SuccessResponse{
     message: string;
 }
 
-export type {IBattery , Battery, IBatteryResponse, BatteryStatistic, SuccessResponse};
+export type {IBattery , Battery, searchCriteria, IBatteryResponse, BatteryStatistic, SuccessResponse};

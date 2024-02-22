@@ -1,12 +1,12 @@
 import axios from "axios";
 import { API_BASE_URL } from "../constant";
-import { Battery, IBattery, IBatteryResponse, SuccessResponse } from "../models/battery";
+import { Battery, IBatteryResponse, SuccessResponse, searchCriteria } from "../models/battery";
 
-export const getBatteryList = async (searchCriteria?: any): Promise<IBatteryResponse> => {
+export const getBatteryList = async (query?: any): Promise<IBatteryResponse> => {
     try {
       let url = `${API_BASE_URL}/fetchBatteries`;
-      if (searchCriteria) {
-        url += `?${new URLSearchParams(searchCriteria).toString()}`;
+      if (query) {
+        url += `?${new URLSearchParams(query).toString()}`;
     }
     const response = await axios.get(url);
     return response.data;

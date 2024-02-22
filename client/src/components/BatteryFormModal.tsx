@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useState } from 'react';
+import React, { ChangeEvent, FC, FormEvent, useState } from 'react';
 import { Modal, Button, Form, Col } from 'react-bootstrap';
 import { Initial_Battery_Data } from '../constant';
 import { Battery } from '../models/battery';
@@ -32,7 +32,7 @@ const BatteryFormModal: FC<BatteryModalProps> = ({ open, onClose, fetchBatteryDa
     }));
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!batteryData.name || !batteryData.postcode || !batteryData.wattCapacity) {
       setValidationErrors({

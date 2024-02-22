@@ -14,9 +14,7 @@ export const getBatteries = async (req: Request, res: Response): Promise<void> =
       }
     }
     if(searchTerm){
-      query.$or = [
-        { name: { $regex: searchTerm, $options: 'i' } }
-      ];
+      query.name= { $regex: searchTerm, $options: 'i' } 
     }
     const batteries = await getBatteriesService(query);
     res.json(batteries);

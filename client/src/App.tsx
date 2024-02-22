@@ -5,14 +5,14 @@ import { useEffect, useState } from 'react';
 import BatteryFormModal from './components/BatteryFormModal';
 import { getBatteryList } from './services/batteryService';
 import BatteryStatisticsChart from './components/BatteryStatisticsChart';
-import { BatteryStatistic, IBattery } from './models/battery';
+import { BatteryStatistic, IBattery, searchCriteria } from './models/battery';
 import BatteryList from './components/BatteryList';
 import BatterySearchForm from './components/BatterySearchForm';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [batteryData, setBatteryData] = useState<IBattery[]>([]);
-  const [batteryStatistics, setBatteryStatistics] = useState<BatteryStatistic>({});
+  const [batteryStatistics, setBatteryStatistics] = useState<BatteryStatistic>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const fetchBatteryData = async () => {
@@ -31,7 +31,7 @@ function App() {
     fetchBatteryData();
   }, []);
 
-  const handleSearch = async (searchCriteria: any) => {
+  const handleSearch = async (searchCriteria: searchCriteria) => {
     try {
       const { batteryList, batteryStats } = await getBatteryList(searchCriteria);
       setBatteryData(batteryList);
